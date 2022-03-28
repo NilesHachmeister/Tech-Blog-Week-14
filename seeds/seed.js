@@ -5,13 +5,15 @@ const userSeed = require('./userSeed.json');
 const postSeed = require('./postSeed.json');
 
 const seedExamples = async () => {
+
     await sequelize.sync({ force: true });
 
     await User.bulkCreate(userSeed, {
         individualHooks: true,
+        returning: true,
     });
 
-    await User.bulkCreate(postSeed);
+    await Post.bulkCreate(postSeed);
 
     process.exit(0);
 };
