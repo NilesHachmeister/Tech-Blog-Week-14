@@ -7,22 +7,15 @@
 </div>
 
 <main class="custom-content-area pt-4">
-    <div class="custom-card mx-5">
 
-        <div class="custom-card-header d-block p-2">
-            <h4 class="card-title ">Primary card title</h4>
-            <h5 class="card-title ">Primary card title</h5>
-            <div style="clear: both;"></div>
-        </div>
-        <div class="custom-card-body d-block">
-            <p class="custom-card-text pt-3 px-3">Some quick example text to build on the card title and make up the
-                bulk of the
-                card's content.</p>
-        </div>
+    {{#each posts}}
+    {{> post-card}}
+    {{/each}}
 
-        {{#if loggedIn}}
-        <h1>WE DID IT!!</h1>
-        {{/if}}
+
+    {{#if loggedIn}}
+    <h1>WE DID IT!!</h1>
+    {{/if}}
 
 
     </div>
