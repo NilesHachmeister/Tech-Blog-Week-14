@@ -7,7 +7,7 @@ const logginCheck = require('../utils/auth')
 
 
 router.get('/', (req, res) => {
-    console.log("here");
+
     res.render('homepage');
 });
 
@@ -15,6 +15,12 @@ router.get('/', (req, res) => {
 router.get('/login', async (req, res) => {
 
     res.render('login');
+
+});
+
+router.get('/signup', async (req, res) => {
+
+    res.render('signup');
 
 });
 
