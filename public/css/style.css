@@ -69,3 +69,13 @@ h5{
 .user-post{
     border-radius: 10px;
 }
+
+.card-link{
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.custom-comment-header{
+    height: 35px;
+    background-color: var(--dark);
+}

@@ -1,18 +1,29 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
-
-const logginCheck = require('../utils/auth')
+const { Post, User, Comment } = require('../../models');
 
 
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const dbUserData = await User.findAll();
-//         res.json(dbUserData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
+
+
+// route is /api/posts/
+
+
+router.get('/:id', async (req, res) => {
+    try {
+
+        const singePostData = await Post.findByPk(req.params.id, {
+            include: [{ model: User }, { model: Comment }]
+        });
+
+
+        const post = singePostData.get({ plain: true });
+
+        res.render('single-post', post);
+        console.log(post);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
