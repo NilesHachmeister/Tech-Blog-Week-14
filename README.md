@@ -1,4 +1,13 @@
 # Tech-Blog-Week-14
 
 
- hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
+create loggin page
+figue out "tech blog" thing changing
+figure out login disapear
+comment page
+dashboard page
+edit post page
+
+
+figure out how to tell the user who posted the comment and add that to the comment line
+

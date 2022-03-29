@@ -1,11 +1,11 @@
 const post = require('express').Router();
-const { User, Post } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 post.get('/', async (req, res) => {
     console.log("here");
 
     try {
-        const dbPostData = await User.findAll();
+        const dbPostData = await Comment.findAll();
 
         res.status(200).json(dbPostData)
     } catch (err) {
