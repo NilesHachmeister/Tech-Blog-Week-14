@@ -6,30 +6,31 @@ const { User, Post, Comment } = require('../models');
 
 
 router.get('/', async (req, res) => {
-
     try {
-
         const dbPostData = await Post.findAll({ include: { model: User } }, { plain: true })
-
-
         const posts = dbPostData.map((post) =>
             post.get({ plain: true }));
-
-
         res.render('homepage', {
             posts,
         });
-
-        console.log(posts);
-
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
 
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard');
+router.get('/dashboard', async (req, res) => {
+    try {
+        const dbPostData = await Post.findAll({ include: { model: User } }, { plain: true })
+        const posts = dbPostData.map((post) =>
+            post.get({ plain: true }));
+        res.render('dashboard', {
+            posts,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
 });
 
 
