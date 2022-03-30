@@ -1,5 +1,7 @@
 const submitPostBtn = document.querySelector('#submit-post-btn');
 const submitCommentBtn = document.querySelector('#submit-comment-btn');
+const updatePostBtn = document.querySelector('#update-post-btn');
+const deletePostBtn = document.querySelector('#delete-post-btn');
 
 
 const submitNewPost = async (e) => {
@@ -50,10 +52,66 @@ const submitNewComment = async (e) => {
 };
 
 
+const updatePost = async (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector('#title').value.trim();
+    const content = document.querySelector('#content').value.trim();
+    const data = document.querySelector('.custom-card')
+    const id = data.dataset.id;
+
+    if (title && content) {
+        const response = await fetch(`/api/posts/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({ title, content }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed create post, please try again');
+        }
+    }
+    else {
+        alert('Failed create post, please try again');
+    }
+};
+
+
+const deletePost = async (e) => {
+    e.preventDefault();
+
+    const data = document.querySelector('.custom-card')
+    const id = data.dataset.id;
+
+    if (id) {
+        const response = await fetch(`/api/posts/${id}`, {
+            method: 'DELETE',
+        });
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed create post, please try again---');
+        }
+    }
+    else {
+        alert('Failed create post, please try again');
+    }
+};
+
+
 if (submitPostBtn) {
     submitPostBtn.addEventListener('click', submitNewPost);
 }
 
 if (submitCommentBtn) {
     submitCommentBtn.addEventListener('click', submitNewComment);
+}
+
+if (updatePostBtn) {
+    updatePostBtn.addEventListener('click', updatePost);
+}
+
+if (deletePostBtn) {
+    deletePostBtn.addEventListener('click', deletePost);
 }

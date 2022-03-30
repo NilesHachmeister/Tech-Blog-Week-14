@@ -4,14 +4,10 @@ const { Post, User, Comment } = require('../../models');
 
 // route is /api/posts/
 router.get('/:id', async (req, res) => {
-    console.log("here");
-
     try {
-
         const singePostData = await Post.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }]
         });
-
 
         const post = singePostData.get({ plain: true });
 
@@ -37,18 +33,21 @@ router.post('/', async (req, res) => {
 
 // put
 router.put('/:id', async (req, res) => {
-
-
     try {
         const postData = await Post.update(
             {
-                content: req.body.content
+                title: req.body.title,
+                content: req.body.content,
+                user_id: 1
             },
             {
                 where: {
                     id: req.params.id,
                 },
             });
+
+
+        console.log(postData);
 
         if (!postData) {
             res.status(404).json({ message: 'No post with this id!' });
@@ -65,8 +64,6 @@ router.put('/:id', async (req, res) => {
 
 // delete
 router.delete('/:id', async (req, res) => {
-
-
     try {
         const postData = await Post.destroy({
             where: {

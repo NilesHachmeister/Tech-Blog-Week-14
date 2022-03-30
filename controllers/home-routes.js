@@ -45,6 +45,27 @@ router.get('/create-post', async (req, res) => {
 
 
 
+router.get('/edit-post/:id', async (req, res) => {
+
+    try {
+        const singePostData = await Post.findByPk(req.params.id, {
+            include: [{ model: User }, { model: Comment }]
+        });
+
+        const post = singePostData.get({ plain: true });
+
+        res.render('edit-post', post);
+        console.log(post);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+
+
+
+
 router.get('/login', async (req, res) => {
     res.render('login');
 });
