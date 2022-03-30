@@ -1,7 +1,7 @@
 const submitSignupBtn = document.querySelector('#submit-sign-up-btn');
 const submitLoginBtn = document.querySelector('#submit-login-btn');
 
-
+// this function allows a new user to sign up
 const signupNewUser = async (e) => {
     e.preventDefault();
 
@@ -26,7 +26,7 @@ const signupNewUser = async (e) => {
     }
 };
 
-
+// this allows a new user to loggin
 const logUserIn = async (e) => {
     e.preventDefault();
 
@@ -48,12 +48,10 @@ const logUserIn = async (e) => {
     }
 };
 
-
+// event listeners to trigger each function
 if (submitSignupBtn) {
     submitSignupBtn.addEventListener('click', signupNewUser);
 }
-
-
 if (submitLoginBtn) {
     submitLoginBtn.addEventListener('click', logUserIn);
 }
