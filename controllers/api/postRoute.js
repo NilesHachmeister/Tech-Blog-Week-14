@@ -28,7 +28,9 @@ router.get('/:id', logginCheck, async (req, res) => {
 // this adds a new post based on the users input
 router.post('/', logginCheck, async (req, res) => {
     try {
-        const postData = await Post.create(req.body);
+        let newPost = req.body;
+        req.body.user_id = req.session.user_id;
+        const postData = await Post.create(newPost);
         res.status(200).json(postData);
 
         // catches any errors
@@ -46,7 +48,7 @@ router.put('/:id', logginCheck, async (req, res) => {
             {
                 title: req.body.title,
                 content: req.body.content,
-                user_id: 1
+                user_id: req.session.user_id
             },
             {
                 where: {

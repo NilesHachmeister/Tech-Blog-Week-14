@@ -7,7 +7,7 @@ const logginCheck = require('../utils/auth');
 router.get('/', async (req, res) => {
 
 
-    console.log(req.session.loggedIn);
+    console.log(req.session.user_id);
     console.log("-----------------------");
 
     // this finds all of the posts that are in the database and populates the homepage with them
@@ -31,20 +31,25 @@ router.get('/', async (req, res) => {
 // this gets the dashboard route and populates it with the users posts
 router.get('/dashboard', logginCheck, async (req, res) => {
 
-
-    console.log(req.session.loggedIn);
-    console.log("???????????????");
-
-
     // this finds all the posts that were created by the user. It then populates the dashboard page with them
     try {
-        const dbPostData = await Post.findAll({ include: { model: User } }, { plain: true }
+        const dbPostData = await Post.findAll({ include: { model: User } }
 
             // add where the post was created by the user id
 
         )
-        const posts = dbPostData.map((post) =>
+
+
+        const plainPosts = dbPostData.map((post) =>
             post.get({ plain: true }));
+
+        console.log(plainPosts);
+
+        const posts = plainPosts.filter(post => post.user_id == req.session.user_id)
+        console.log(req.session.user_id);
+        console.log(posts);
+
+
         res.render('dashboard', {
             posts,
             loggedIn: req.session.loggedIn,

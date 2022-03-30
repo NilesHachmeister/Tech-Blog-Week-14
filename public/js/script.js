@@ -3,7 +3,7 @@ const submitCommentBtn = document.querySelector('#submit-comment-btn');
 const updatePostBtn = document.querySelector('#update-post-btn');
 const deletePostBtn = document.querySelector('#delete-post-btn');
 
-
+// allows the user to submit a new post
 const submitNewPost = async (e) => {
     e.preventDefault();
 
@@ -27,6 +27,7 @@ const submitNewPost = async (e) => {
     }
 };
 
+// allows the user to submit a new comment
 const submitNewComment = async (e) => {
     e.preventDefault();
 
@@ -51,7 +52,7 @@ const submitNewComment = async (e) => {
     }
 };
 
-
+// allows the user to update a post
 const updatePost = async (e) => {
     e.preventDefault();
 
@@ -77,7 +78,7 @@ const updatePost = async (e) => {
     }
 };
 
-
+// allows the user to delete a post
 const deletePost = async (e) => {
     e.preventDefault();
 
@@ -100,6 +101,7 @@ const deletePost = async (e) => {
 };
 
 
+// event listeners
 if (submitPostBtn) {
     submitPostBtn.addEventListener('click', submitNewPost);
 }
