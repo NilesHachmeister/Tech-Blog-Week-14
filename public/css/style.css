@@ -79,3 +79,10 @@ h5{
     height: 35px;
     background-color: var(--dark);
 }
+
+#create-new-post-bt{
+    background-color: var(--dark);
+    color: var(--light);
+    margin-left: 45%;
+    width: 10%;
+}

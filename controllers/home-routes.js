@@ -34,6 +34,16 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
+router.get('/create-post', async (req, res) => {
+    try {
+        res.render('create-post');
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+
 
 router.get('/login', async (req, res) => {
     res.render('login');
