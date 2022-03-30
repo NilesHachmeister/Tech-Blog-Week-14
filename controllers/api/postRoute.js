@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
-
+const logginCheck = require('../../utils/auth');
 
 // route is /api/posts/
-router.get('/:id', async (req, res) => {
+
+// this gets a post and its comments comments. it then renders the single-post handlebars file with the information
+router.get('/:id', logginCheck, async (req, res) => {
+
+    // this gets the posts, its comments, and its user, and then renders the page based on the information
     try {
         const singePostData = await Post.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }]
@@ -11,28 +15,32 @@ router.get('/:id', async (req, res) => {
 
         const post = singePostData.get({ plain: true });
 
-        res.render('single-post', post);
+        res.render('single-post', { post });
         console.log(post);
+
+        // catches any errors
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
 
-// post
-router.post('/', async (req, res) => {
+// this adds a new post based on the users input
+router.post('/', logginCheck, async (req, res) => {
     try {
         const postData = await Post.create(req.body);
         res.status(200).json(postData);
+
+        // catches any errors
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
+// this changes a post by id and changes it based on the users information
+router.put('/:id', logginCheck, async (req, res) => {
 
-
-// put
-router.put('/:id', async (req, res) => {
+    // this checks the database for the specific post in question and updates it
     try {
         const postData = await Post.update(
             {
@@ -46,24 +54,23 @@ router.put('/:id', async (req, res) => {
                 },
             });
 
-
-        console.log(postData);
-
+        // if there is no post there is a 404 error
         if (!postData) {
             res.status(404).json({ message: 'No post with this id!' });
             return;
         }
-
         res.status(200).json(postData);
+
+        // catches any errors
     } catch (err) {
         res.status(500).json(err);
     }
-
-
 });
 
-// delete
-router.delete('/:id', async (req, res) => {
+// this deletes a post based on the id
+router.delete('/:id', logginCheck, async (req, res) => {
+
+    // this find the post with the id and destroys it
     try {
         const postData = await Post.destroy({
             where: {
@@ -71,16 +78,17 @@ router.delete('/:id', async (req, res) => {
             },
         });
 
+        // if  there is no post, a 404 error is trown
         if (!postData) {
             res.status(404).json({ message: 'No post found with that id!' });
             return;
         }
-
         res.status(200).json(postData);
+
+        // catches any errors
     } catch (err) {
         res.status(500).json(err);
     }
-
 });
 
 

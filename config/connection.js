@@ -3,6 +3,8 @@ require('dotenv').config();
 
 let sequelize;
 
+
+// this file lets us connect with mysql to interact with the dabatase
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
