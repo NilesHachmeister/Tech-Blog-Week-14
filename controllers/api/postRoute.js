@@ -12,11 +12,8 @@ router.get('/:id', logginCheck, async (req, res) => {
         const singePostData = await Post.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }]
         });
-
         const post = singePostData.get({ plain: true });
-
-        res.render('single-post', { post });
-        console.log(post);
+        res.render('single-post', { post, });
 
         // catches any errors
     } catch (err) {

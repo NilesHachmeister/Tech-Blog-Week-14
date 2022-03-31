@@ -16,6 +16,10 @@ Comment.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        poster_username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         post_id: {
             type: DataTypes.INTEGER,
             references: {

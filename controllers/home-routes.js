@@ -33,11 +33,7 @@ router.get('/dashboard', logginCheck, async (req, res) => {
 
     // this finds all the posts that were created by the user. It then populates the dashboard page with them
     try {
-        const dbPostData = await Post.findAll({ include: { model: User } }
-
-            // add where the post was created by the user id
-
-        )
+        const dbPostData = await Post.findAll({ include: { model: User } } )
 
 
         const plainPosts = dbPostData.map((post) =>
@@ -46,9 +42,6 @@ router.get('/dashboard', logginCheck, async (req, res) => {
         console.log(plainPosts);
 
         const posts = plainPosts.filter(post => post.user_id == req.session.user_id)
-        console.log(req.session.user_id);
-        console.log(posts);
-
 
         res.render('dashboard', {
             posts,

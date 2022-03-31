@@ -1,9 +1,7 @@
 # Tech-Blog-Week-14
 
 
-
-pass userid into creating a post or a comment
-pass userid into updating a post or a comment
+check user_id in comments
 
 how to find the username through comment's user id.
 
