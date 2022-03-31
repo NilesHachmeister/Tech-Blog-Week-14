@@ -25,9 +25,19 @@ router.get('/:id', logginCheck, async (req, res) => {
 // this adds a new post based on the users input
 router.post('/', logginCheck, async (req, res) => {
     try {
-        let newPost = req.body;
-        req.body.user_id = req.session.user_id;
-        const postData = await Post.create(newPost);
+
+        // this gets the username of the current user and adds it to the posts's data
+        const dbUser = await User.findByPk(req.session.user_id)
+        const user = dbUser.get({ plain: true });
+        const user_name = user.username
+
+        const postData = await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            user_id: req.session.user_id,
+            post_username: user_name
+        });
+
         res.status(200).json(postData);
 
         // catches any errors
