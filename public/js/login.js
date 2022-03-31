@@ -8,6 +8,11 @@ const signupNewUser = async (e) => {
     const username = document.querySelector('#username').value.trim();
     const password = document.querySelector('#password').value.trim();
 
+    if (password.split("").length < 8) {
+        alert("password must be at least 8 characters long. Please try again");
+        return;
+    }
+
     if (username && password) {
         const response = await fetch('/api/users', {
             method: 'POST',

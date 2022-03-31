@@ -13,7 +13,7 @@ router.get('/:id', logginCheck, async (req, res) => {
             include: [{ model: User }, { model: Comment }]
         });
         const post = singePostData.get({ plain: true });
-        res.render('single-post', { post, });
+        res.render('single-post', { post, loggedIn: req.session.loggedIn, },);
 
         // catches any errors
     } catch (err) {

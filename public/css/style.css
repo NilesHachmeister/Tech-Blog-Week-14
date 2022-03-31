@@ -1,37 +1,37 @@
-:root{
-    --dark:#1d0404 ;
-    --light:#b1eec9 ;
-   }
-
-header {
-  background-color: var(--dark);
-  color:var(--light);
-  text-decoration: none;
+:root {
+    --dark: #1d0404;
+    --light: #b1eec9;
 }
 
-.nav-link{
+header {
+    background-color: var(--dark);
+    color: var(--light);
+    text-decoration: none;
+}
+
+.nav-link {
     text-decoration: none;
     color: var(--light);
     font-size: 20px;
 }
 
-#h1-container{
+#h1-container {
     background-color: var(--light);
-    color:var(--dark);
+    color: var(--dark);
     border-radius: 15px;
     box-shadow: 5px 5px #888888;
 }
 
-#page-title-container{
+#page-title-container {
     background-color: var(--dark);
-    color:var(--light);
+    color: var(--light);
 }
 
-body{
+body {
     background-color: var(--light);
 }
 
-.custom-content-area { 
+.custom-content-area {
     background-color: var(--light);
 }
 
@@ -40,18 +40,18 @@ body{
     font-size: 20px;
 }
 
-.custom-card-header{
+.custom-card-header {
     background-color: var(--dark);
     color: var(--light);
 }
 
-h4{
+h4 {
     float: left;
     font-size: 22px;
 }
 
-h5{
-    float:right;
+h5 {
+    float: right;
     font-size: 18px;
 }
 
@@ -61,26 +61,30 @@ h5{
     background-color: var(--dark);
 }
 
-.login-redirect-link{
+.login-redirect-link {
     color: blue;
     font-size: 20px;
 }
 
-.user-post{
+.user-post {
     border-radius: 10px;
 }
 
-.card-link{
+.card-link {
     text-decoration: none;
     color: var(--dark);
 }
 
-.custom-comment-header{
+.card-link:hover {
+    color: var(--dark);
+}
+
+.custom-comment-header {
     height: 35px;
     background-color: var(--dark);
 }
 
-#create-new-post-bt{
+#create-new-post-bt {
     background-color: var(--dark);
     color: var(--light);
     margin-left: 45%;

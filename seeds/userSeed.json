@@ -6,5 +6,9 @@
     {
         "username": "Lernantino",
         "password": "ExamplePass"
+    },
+    {
+        "username": "Terry Pratchett",
+        "password": "ExamplePass"
     }
 ]

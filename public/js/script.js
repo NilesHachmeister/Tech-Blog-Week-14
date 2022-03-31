@@ -70,11 +70,11 @@ const updatePost = async (e) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed create post, please try again');
+            alert('Failed to update a post, please try again');
         }
     }
     else {
-        alert('Failed create post, please try again');
+        alert('Failed to update a post, please try again');
     }
 };
 
@@ -92,11 +92,11 @@ const deletePost = async (e) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed create post, please try again---');
+            alert('Failed to delete a post, please try again');
         }
     }
     else {
-        alert('Failed create post, please try again');
+        alert('Failed to delete a post, please try again');
     }
 };
 
