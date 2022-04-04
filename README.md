@@ -21,6 +21,9 @@ The goal of this project is to set up a tech blog server where users can post in
 
 * [Example
   ](#example)
+  
+* [Deployed
+  ](#deployed)
 
 * [Questions
   ](#questions)
@@ -72,6 +75,11 @@ In this example you can see that the post has been added to the homepage.
 
 In this example you can see previous comments, and the user has the ability to add a comment.
 <img src="./assets/example-imgs/example8.png" alt="an image demonstrating what the page looks like when you click on a post from the homepage">
+
+## Deployed
+
+The deployed application can be found at: 
+https://niles-hachmeister-tech-blog.herokuapp.com/
 
 ## Questions
 
